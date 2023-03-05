@@ -1,4 +1,4 @@
-import { State, TODO } from "./model";
+import { State, TODO } from "../module/todo";
 import { ADD_TODO, DELETE_TODO } from "./todoActions";
 
 const initState : State = {
@@ -26,7 +26,7 @@ const todoReducer = (state: State = initState, action: any): State => {
                 todos
             }
         default:
-            console.log('return default>>>' + JSON.stringify(state))
+            console.log('redux_todoReducer default>>>' + JSON.stringify(state))
             return state;
     }
 };

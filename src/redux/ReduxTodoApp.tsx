@@ -1,7 +1,7 @@
 import {useState} from "react";
 import { connect } from "react-redux";
-import { State, TODO } from "./redux/model";
-import {DISPATCH_ADD_TODO, DISPATCH_DELETE_TODO } from "./redux/todoActions";
+import { State, TODO } from "../module/todo";
+import {DISPATCH_ADD_TODO, DISPATCH_DELETE_TODO } from "./todoActions";
 
 //6.数据和 action 函数需要通过 prop 访问
 function ReduxTodoApp (prop: {todos: TODO[], addTodo: any, deleteTodo: any}) {
