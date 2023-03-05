@@ -3,8 +3,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import ReduxTodoApp from './ReduxTodoApp';
-import store from './redux/store';
+import ReduxTodoApp from './redux/ReduxTodoApp';
+// import store from './redux/store';
+
+import ToolkitTodoApp from './redux-toolkit/ToolkitTodoApp';
+import store from './redux-toolkit/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,8 +16,10 @@ const root = ReactDOM.createRoot(
 //5.分发给子元素
 root.render(
   <Provider store={store}>
-    <ReduxTodoApp/>
+    {/* <ReduxTodoApp/> */}
+    <ToolkitTodoApp/>
   </Provider>
+
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>
