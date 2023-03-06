@@ -1,21 +1,20 @@
 import {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { State, TODO } from "../module/todo";
-import store from "./store";
-import { addTodo, deleteTodo } from "./todoSlice";
-type RootState = ReturnType<typeof store.getState>;
+import { TODO } from "../module/todo";
+import { Dispatch, RootState } from "./store";
 
-//4.业务通过 useSelector 获取数据；通过 useDispatch 分发
-//比如使用 connect，更简单易懂
-const ToolkitTodoApp = () => {
+//5.业务通过 useSelector 获取数据；通过 useDispatch 分发
+const RematchTodoApp = () => {
 
-    //获取到的是全局的 State，需要通过 reducer 的名称获取到当前需要的状态
+    //和 toolkit 类似，需要根据 model 名称访问数据
+    //参数类型就是 store 里导出的类型
     const todos = useSelector((state: RootState) => {
-        // console.log('ToolkitTodoApp useSelector>>> ' + JSON.stringify(state) + ", " + typeof state)
         return state.todo.todos;
     });
 
-    const dispatch = useDispatch();
+    //和 toolkit 不同的在于，需要声明类型
+    //同时分发的时候也有些不同
+    const dispatch = useDispatch<Dispatch>();
     const [text, setText] = useState('');
 
     const handleInput = (e: any) => {
@@ -23,18 +22,20 @@ const ToolkitTodoApp = () => {
     }
 
     const handleAddTodo = () => {
-        //todoSlice 导出的 action, 参数就是 action.payload 的类型
-        dispatch(addTodo(text))
+        // 分发的时候，通过 dispatch.<model name>.<reducer name> 的方式调用，参数就是 payload 的类型
+        //toolkit 里的写法：dispatch(addTodo(text))
+        dispatch.todo.addTodo(text)
         setText('')
     }
 
     const handleDeleteTodo = (text: string) => {
-        dispatch(deleteTodo(text))
+        //toolkit 里的写法：dispatch(deleteTodo(text))
+        dispatch.todo.deleteTodo(text)
     }
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-            <h1>This Is Redux-Toolkit TODO App.</h1>
+            <h1>This Is Rematch TODO App.</h1>
             <ul>
                 {todos && todos.map((todo: TODO, index: any) => {
                     return (
@@ -54,4 +55,4 @@ const ToolkitTodoApp = () => {
     )
 }
 
-export default ToolkitTodoApp;
+export default RematchTodoApp;

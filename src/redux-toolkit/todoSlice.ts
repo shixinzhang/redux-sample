@@ -31,7 +31,7 @@ const todoSlice = createSlice({
             console.log('reducers deleteTodo >>> ' + action.payload)
 
             state.todos = state.todos.filter((item: TODO, index: number)=> {
-                return item.text != action.payload
+                return item.text !== action.payload
             });
         }
     }
