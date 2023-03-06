@@ -38,7 +38,7 @@ function ReduxTodoApp (prop: {todos: TODO[], addTodo: any, deleteTodo: any}) {
 
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <input value={text} onChange={handleInput}/>
-                <button onClick={handleAddTodo}>Add Todo</button>
+                <button style={{marginLeft: '12px'}} onClick={handleAddTodo}>Add Todo</button>
             </div>
         </div>
     )

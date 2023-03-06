@@ -3,11 +3,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
+
+//1.redux
 import ReduxTodoApp from './redux/ReduxTodoApp';
 // import store from './redux/store';
 
+//2.redux-toolkit
 import ToolkitTodoApp from './redux-toolkit/ToolkitTodoApp';
-import store from './redux-toolkit/store';
+// import store from './redux-toolkit/store';
+
+//3.rematch
+import RematchTodoApp from './rematch/RematchTodoApp';
+import { store } from './rematch/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,12 +24,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     {/* <ReduxTodoApp/> */}
-    <ToolkitTodoApp/>
+    {/* <ToolkitTodoApp/> */}
+    <RematchTodoApp/>
   </Provider>
-
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
