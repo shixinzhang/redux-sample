@@ -10,7 +10,7 @@ const initState : State = {
     ]
 };
 
-//1.创建一个 model（类似 redux-toolkit 的 slice），包括一个业务的初始状态、状态处理和变更后的影响
+//2.创建一个 model（类似 redux-toolkit 的 slice），包括一个业务的初始状态、状态处理和变更后的影响
 //最核心的地方 **
 export const todo = createModel<RootModel> () ({
     name: 'todo',
@@ -20,7 +20,7 @@ export const todo = createModel<RootModel> () ({
         //与 toolkit 的 slice 不同，参数直接是 payload，更简单
         // addTodo: (state: State, action: PayloadAction<string>) => {
         addTodo: (state: State, payload: string) => {
-            console.log('createModel addTodo >>> ' + payload + ", current: " + JSON.stringify(state))
+            // console.log('createModel addTodo >>> ' + payload + ", current: " + JSON.stringify(state))
             // //可以直接修改数据，也可以返回新的，不论哪种方式，都必须有返回值！必须有返回值！必须有返回值！
 
             //1.直接修改数据
@@ -37,7 +37,7 @@ export const todo = createModel<RootModel> () ({
             };
         },
         deleteTodo: (state: State, payload: string) => {
-            console.log('createModel deleteTodo >>> ' + payload)
+            // console.log('createModel deleteTodo >>> ' + payload)
 
             // state.todos = state.todos.filter((item: TODO, index: number)=> {
             //     return item.text !== payload
